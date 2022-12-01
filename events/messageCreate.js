@@ -6,5 +6,7 @@ module.exports = async (bot, message) => {
     if (command === "ping") return bot.commands.get("ping").run(bot, message);
     if (command === "changeTheme")
       return bot.commands.get("changeTheme").run(args[0], message);
+    if (command === "currentTheme")
+      return bot.commands.get("currentTheme").run(message);
   }
 };
