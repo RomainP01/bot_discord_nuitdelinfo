@@ -1,9 +1,20 @@
 const Discord = require("discord.js");
-const bot = new Discord.Client({ intents: 3276799 });
+const intents = new Discord.IntentsBitField(3276799);
+const bot = new Discord.Client({ intents: intents });
+const loadCommands = require("./loaders/loadCommands");
+const loadEvents = require("./loaders/loadEvents");
 const config = require("./config");
 
-bot.login(config.token);
+bot.commands = new Discord.Collection();
 
+bot.login(config.token);
+loadCommands(bot);
+loadEvents(bot)
+
+bot.on("messageCreate", async (message) => {
+  if (message.content === "!ping")
+    return bot.commands.get("ping").run(bot, message);
+});
 bot.on("ready", async () => {
   console.log(`${bot.user.tag} est en ligne`);
 });
