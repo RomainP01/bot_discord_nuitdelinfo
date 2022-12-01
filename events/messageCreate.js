@@ -14,5 +14,7 @@ module.exports = async (bot, message) => {
       return bot.commands.get("currentLanguage").run(message);
     if (command === "changeHomepageBanner")
       return bot.commands.get("changeHomepageBanner").run(args[0], message);
+    if (command === "addMessage")
+      return bot.commands.get("addMessage").run(args, message);
   }
 };
