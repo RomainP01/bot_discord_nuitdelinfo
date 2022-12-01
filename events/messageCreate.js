@@ -8,5 +8,9 @@ module.exports = async (bot, message) => {
       return bot.commands.get("changeTheme").run(args[0], message);
     if (command === "currentTheme")
       return bot.commands.get("currentTheme").run(message);
+    if (command === "changeLanguage")
+      return bot.commands.get("changeLanguage").run(args[0], message);
+    if (command === "currentLanguage")
+      return bot.commands.get("currentLanguage").run(message);
   }
 };
